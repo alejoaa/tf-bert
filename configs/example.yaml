@@ -1,0 +1,30 @@
+label_column_name: "ner_tags"
+load_script: "arrow"
+max_seq_length: 512
+model_name: "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+text_column_name: "tokens"
+train_file: "../data/extri/processed/train/data-00000-of-00001.arrow"
+validation_file: "../data/extri/processed/validation/data-00000-of-00001.arrow"
+
+# TrainingArguments
+do_eval: True
+do_predict: False
+do_train: True
+evaluation_strategy: "epoch"
+learning_rate: 2e-05
+load_best_model_at_end: True
+log_level: "info"
+logging_first_step: True
+logging_strategy: "epoch"
+metric_for_best_model: "eval_loss"
+num_train_epochs: 5
+output_dir: "../mlruns/test_run"
+overwrite_output_dir: True
+per_device_eval_batch_size: 8
+per_device_train_batch_size: 8
+report_to:
+  - "tensorboard"
+save_strategy: "epoch"
+save_total_limit: 2
+seed: 42
+warmup_ratio: 0.1

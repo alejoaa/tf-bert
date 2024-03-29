@@ -1,0 +1,35 @@
+{%- extends 'null.j2' -%}
+{%- block header -%}
+#!/usr/bin/env python
+# coding: utf-8
+
+# Added by Jinja template to the final script -----
+
+import sys
+
+if len(sys.argv) == 2 and sys.argv[1].endswith(".yaml"):
+    config_file = sys.argv[1]
+else:
+    raise Exception("Must provide a .yaml file as the only parameter")
+    
+# -----
+
+
+{% endblock header %}
+{% block in_prompt %}
+{% if resources.global_content_filter.include_input_prompt -%}
+    # In[{{ cell.execution_count if cell.execution_count else ' ' }}]:
+{% endif %}
+{% endblock in_prompt %}
+{% block input %}
+{% if "imports" in cell['metadata'].get('tags', []) -%}
+{{ cell.source | ipython2python }}
+{% elif "script" in cell['metadata'].get('tags', []) -%}
+{{ cell.source | ipython2python | replace("# ","") }}
+{% else %}
+{{ cell.source | ipython2python }}
+{% endif %}
+{% endblock input %}
+{% block markdowncell scoped %}
+{{ cell.source | comment_lines }}
+{% endblock markdowncell %}

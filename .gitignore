@@ -1,0 +1,12 @@
+.vscode
+.mypy_cache
+.DS_Store
+
+
+configs/*
+!configs/example.yaml
+
+data/
+ignore/
+
+utils/seqeval
