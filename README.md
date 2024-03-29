@@ -1,6 +1,6 @@
 # TF-BERT: A fine-tuned BERT model for Named Entity Recognition of transcription factors and target genes in scientific literature
 
-TF-BERT is [BioMedBERT](https://doi.org/10.1145/3458754) model fine-tuned on a custom Named Entity Recognition dataset derived from [ExTRI](https://doi.org/10.1016/j.bbagrm.2021.194778). Specifically, ExTRI contains sentences with mentions of interactions between transcription factors (TFs) and their target genes (TGs). We used an existing fine-tuned BioMedBERT model and fuzzy matching to label words/tokens in ExTRI’s sentences for TF and TG entities, using the reported TFs and TGs from ExTRI for each sentence. Next, we fine-tuned a pre-trained BioMedBERT model on the labeled sentences to detect TF and TG classes.
+TF-BERT a is [BioMedBERT](https://doi.org/10.1145/3458754) model fine-tuned on a custom Named Entity Recognition dataset derived from [ExTRI](https://doi.org/10.1016/j.bbagrm.2021.194778). Specifically, ExTRI contains sentences with mentions of interactions between transcription factors (TFs) and their target genes (TGs). We used an existing fine-tuned BioMedBERT model and fuzzy matching to label words/tokens in ExTRI’s sentences for TF and TG entities, using the reported TFs and TGs from ExTRI for each sentence. Next, we fine-tuned a pre-trained BioMedBERT model on the labeled sentences to detect TF and TG classes.
 
 ## Project structure
 - `configs/`: Configuration files with arguments for fine-tuning BERT with `notebooks/run_ner.ipynb` or `scripts/run_ner.py`.
